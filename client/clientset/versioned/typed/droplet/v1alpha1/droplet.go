@@ -22,12 +22,13 @@ import (
 	"context"
 	"time"
 
+	v1alpha1 "kubeform.dev/provider-digitalocean-api/apis/droplet/v1alpha1"
+	scheme "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/scheme"
+
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
 	rest "k8s.io/client-go/rest"
-	v1alpha1 "kubeform.dev/provider-digitalocean-api/apis/droplet/v1alpha1"
-	scheme "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/scheme"
 )
 
 // DropletsGetter has a method to return a DropletInterface.

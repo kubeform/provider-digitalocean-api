@@ -19,16 +19,12 @@ limitations under the License.
 package scheme
 
 import (
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
-	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	appv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/app/v1alpha1"
 	cdnv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/cdn/v1alpha1"
 	certificatev1alpha1 "kubeform.dev/provider-digitalocean-api/apis/certificate/v1alpha1"
 	containerregistryv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/containerregistry/v1alpha1"
 	customv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/custom/v1alpha1"
+	databasev1alpha1 "kubeform.dev/provider-digitalocean-api/apis/database/v1alpha1"
 	domainv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/domain/v1alpha1"
 	dropletv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/droplet/v1alpha1"
 	firewallv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/firewall/v1alpha1"
@@ -42,6 +38,12 @@ import (
 	tagv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/tag/v1alpha1"
 	volumev1alpha1 "kubeform.dev/provider-digitalocean-api/apis/volume/v1alpha1"
 	vpcv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/vpc/v1alpha1"
+
+	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	runtime "k8s.io/apimachinery/pkg/runtime"
+	schema "k8s.io/apimachinery/pkg/runtime/schema"
+	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
+	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 )
 
 var Scheme = runtime.NewScheme()
@@ -53,6 +55,7 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	certificatev1alpha1.AddToScheme,
 	containerregistryv1alpha1.AddToScheme,
 	customv1alpha1.AddToScheme,
+	databasev1alpha1.AddToScheme,
 	domainv1alpha1.AddToScheme,
 	dropletv1alpha1.AddToScheme,
 	firewallv1alpha1.AddToScheme,
