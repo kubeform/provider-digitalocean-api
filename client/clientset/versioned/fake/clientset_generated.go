@@ -19,11 +19,6 @@ limitations under the License.
 package fake
 
 import (
-	"k8s.io/apimachinery/pkg/runtime"
-	"k8s.io/apimachinery/pkg/watch"
-	"k8s.io/client-go/discovery"
-	fakediscovery "k8s.io/client-go/discovery/fake"
-	"k8s.io/client-go/testing"
 	clientset "kubeform.dev/provider-digitalocean-api/client/clientset/versioned"
 	appv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/app/v1alpha1"
 	fakeappv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/app/v1alpha1/fake"
@@ -35,6 +30,8 @@ import (
 	fakecontainerregistryv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/containerregistry/v1alpha1/fake"
 	customv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/custom/v1alpha1"
 	fakecustomv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/custom/v1alpha1/fake"
+	databasev1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/database/v1alpha1"
+	fakedatabasev1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/database/v1alpha1/fake"
 	domainv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/domain/v1alpha1"
 	fakedomainv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/domain/v1alpha1/fake"
 	dropletv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/droplet/v1alpha1"
@@ -61,6 +58,12 @@ import (
 	fakevolumev1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/volume/v1alpha1/fake"
 	vpcv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/vpc/v1alpha1"
 	fakevpcv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/vpc/v1alpha1/fake"
+
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/watch"
+	"k8s.io/client-go/discovery"
+	fakediscovery "k8s.io/client-go/discovery/fake"
+	"k8s.io/client-go/testing"
 )
 
 // NewSimpleClientset returns a clientset that will respond with the provided objects.
@@ -133,6 +136,11 @@ func (c *Clientset) ContainerregistryV1alpha1() containerregistryv1alpha1.Contai
 // CustomV1alpha1 retrieves the CustomV1alpha1Client
 func (c *Clientset) CustomV1alpha1() customv1alpha1.CustomV1alpha1Interface {
 	return &fakecustomv1alpha1.FakeCustomV1alpha1{Fake: &c.Fake}
+}
+
+// DatabaseV1alpha1 retrieves the DatabaseV1alpha1Client
+func (c *Clientset) DatabaseV1alpha1() databasev1alpha1.DatabaseV1alpha1Interface {
+	return &fakedatabasev1alpha1.FakeDatabaseV1alpha1{Fake: &c.Fake}
 }
 
 // DomainV1alpha1 retrieves the DomainV1alpha1Client

@@ -21,14 +21,12 @@ package versioned
 import (
 	"fmt"
 
-	discovery "k8s.io/client-go/discovery"
-	rest "k8s.io/client-go/rest"
-	flowcontrol "k8s.io/client-go/util/flowcontrol"
 	appv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/app/v1alpha1"
 	cdnv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/cdn/v1alpha1"
 	certificatev1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/certificate/v1alpha1"
 	containerregistryv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/containerregistry/v1alpha1"
 	customv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/custom/v1alpha1"
+	databasev1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/database/v1alpha1"
 	domainv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/domain/v1alpha1"
 	dropletv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/droplet/v1alpha1"
 	firewallv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/firewall/v1alpha1"
@@ -42,6 +40,10 @@ import (
 	tagv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/tag/v1alpha1"
 	volumev1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/volume/v1alpha1"
 	vpcv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/vpc/v1alpha1"
+
+	discovery "k8s.io/client-go/discovery"
+	rest "k8s.io/client-go/rest"
+	flowcontrol "k8s.io/client-go/util/flowcontrol"
 )
 
 type Interface interface {
@@ -51,6 +53,7 @@ type Interface interface {
 	CertificateV1alpha1() certificatev1alpha1.CertificateV1alpha1Interface
 	ContainerregistryV1alpha1() containerregistryv1alpha1.ContainerregistryV1alpha1Interface
 	CustomV1alpha1() customv1alpha1.CustomV1alpha1Interface
+	DatabaseV1alpha1() databasev1alpha1.DatabaseV1alpha1Interface
 	DomainV1alpha1() domainv1alpha1.DomainV1alpha1Interface
 	DropletV1alpha1() dropletv1alpha1.DropletV1alpha1Interface
 	FirewallV1alpha1() firewallv1alpha1.FirewallV1alpha1Interface
@@ -75,6 +78,7 @@ type Clientset struct {
 	certificateV1alpha1       *certificatev1alpha1.CertificateV1alpha1Client
 	containerregistryV1alpha1 *containerregistryv1alpha1.ContainerregistryV1alpha1Client
 	customV1alpha1            *customv1alpha1.CustomV1alpha1Client
+	databaseV1alpha1          *databasev1alpha1.DatabaseV1alpha1Client
 	domainV1alpha1            *domainv1alpha1.DomainV1alpha1Client
 	dropletV1alpha1           *dropletv1alpha1.DropletV1alpha1Client
 	firewallV1alpha1          *firewallv1alpha1.FirewallV1alpha1Client
@@ -113,6 +117,11 @@ func (c *Clientset) ContainerregistryV1alpha1() containerregistryv1alpha1.Contai
 // CustomV1alpha1 retrieves the CustomV1alpha1Client
 func (c *Clientset) CustomV1alpha1() customv1alpha1.CustomV1alpha1Interface {
 	return c.customV1alpha1
+}
+
+// DatabaseV1alpha1 retrieves the DatabaseV1alpha1Client
+func (c *Clientset) DatabaseV1alpha1() databasev1alpha1.DatabaseV1alpha1Interface {
+	return c.databaseV1alpha1
 }
 
 // DomainV1alpha1 retrieves the DomainV1alpha1Client
@@ -221,6 +230,10 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.databaseV1alpha1, err = databasev1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.domainV1alpha1, err = domainv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
@@ -290,6 +303,7 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.certificateV1alpha1 = certificatev1alpha1.NewForConfigOrDie(c)
 	cs.containerregistryV1alpha1 = containerregistryv1alpha1.NewForConfigOrDie(c)
 	cs.customV1alpha1 = customv1alpha1.NewForConfigOrDie(c)
+	cs.databaseV1alpha1 = databasev1alpha1.NewForConfigOrDie(c)
 	cs.domainV1alpha1 = domainv1alpha1.NewForConfigOrDie(c)
 	cs.dropletV1alpha1 = dropletv1alpha1.NewForConfigOrDie(c)
 	cs.firewallV1alpha1 = firewallv1alpha1.NewForConfigOrDie(c)
@@ -316,6 +330,7 @@ func New(c rest.Interface) *Clientset {
 	cs.certificateV1alpha1 = certificatev1alpha1.New(c)
 	cs.containerregistryV1alpha1 = containerregistryv1alpha1.New(c)
 	cs.customV1alpha1 = customv1alpha1.New(c)
+	cs.databaseV1alpha1 = databasev1alpha1.New(c)
 	cs.domainV1alpha1 = domainv1alpha1.New(c)
 	cs.dropletV1alpha1 = dropletv1alpha1.New(c)
 	cs.firewallV1alpha1 = firewallv1alpha1.New(c)

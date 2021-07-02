@@ -23,16 +23,13 @@ import (
 	sync "sync"
 	time "time"
 
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	cache "k8s.io/client-go/tools/cache"
 	versioned "kubeform.dev/provider-digitalocean-api/client/clientset/versioned"
 	app "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/app"
 	cdn "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/cdn"
 	certificate "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/certificate"
 	containerregistry "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/containerregistry"
 	custom "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/custom"
+	database "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/database"
 	domain "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/domain"
 	droplet "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/droplet"
 	firewall "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/firewall"
@@ -47,6 +44,11 @@ import (
 	tag "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/tag"
 	volume "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/volume"
 	vpc "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/vpc"
+
+	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	runtime "k8s.io/apimachinery/pkg/runtime"
+	schema "k8s.io/apimachinery/pkg/runtime/schema"
+	cache "k8s.io/client-go/tools/cache"
 )
 
 // SharedInformerOption defines the functional option type for SharedInformerFactory.
@@ -194,6 +196,7 @@ type SharedInformerFactory interface {
 	Certificate() certificate.Interface
 	Containerregistry() containerregistry.Interface
 	Custom() custom.Interface
+	Database() database.Interface
 	Domain() domain.Interface
 	Droplet() droplet.Interface
 	Firewall() firewall.Interface
@@ -227,6 +230,10 @@ func (f *sharedInformerFactory) Containerregistry() containerregistry.Interface 
 
 func (f *sharedInformerFactory) Custom() custom.Interface {
 	return custom.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Database() database.Interface {
+	return database.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Domain() domain.Interface {

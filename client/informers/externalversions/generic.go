@@ -21,13 +21,12 @@ package externalversions
 import (
 	"fmt"
 
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	cache "k8s.io/client-go/tools/cache"
 	v1alpha1 "kubeform.dev/provider-digitalocean-api/apis/app/v1alpha1"
 	cdnv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/cdn/v1alpha1"
 	certificatev1alpha1 "kubeform.dev/provider-digitalocean-api/apis/certificate/v1alpha1"
 	containerregistryv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/containerregistry/v1alpha1"
 	customv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/custom/v1alpha1"
+	databasev1alpha1 "kubeform.dev/provider-digitalocean-api/apis/database/v1alpha1"
 	domainv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/domain/v1alpha1"
 	dropletv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/droplet/v1alpha1"
 	firewallv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/firewall/v1alpha1"
@@ -41,6 +40,9 @@ import (
 	tagv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/tag/v1alpha1"
 	volumev1alpha1 "kubeform.dev/provider-digitalocean-api/apis/volume/v1alpha1"
 	vpcv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/vpc/v1alpha1"
+
+	schema "k8s.io/apimachinery/pkg/runtime/schema"
+	cache "k8s.io/client-go/tools/cache"
 )
 
 // GenericInformer is type of SharedIndexInformer which will locate and delegate to other
@@ -90,6 +92,20 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		// Group=custom.digitalocean.kubeform.com, Version=v1alpha1
 	case customv1alpha1.SchemeGroupVersion.WithResource("images"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Custom().V1alpha1().Images().Informer()}, nil
+
+		// Group=database.digitalocean.kubeform.com, Version=v1alpha1
+	case databasev1alpha1.SchemeGroupVersion.WithResource("clusters"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Database().V1alpha1().Clusters().Informer()}, nil
+	case databasev1alpha1.SchemeGroupVersion.WithResource("connectionpools"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Database().V1alpha1().ConnectionPools().Informer()}, nil
+	case databasev1alpha1.SchemeGroupVersion.WithResource("dbs"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Database().V1alpha1().Dbs().Informer()}, nil
+	case databasev1alpha1.SchemeGroupVersion.WithResource("firewalls"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Database().V1alpha1().Firewalls().Informer()}, nil
+	case databasev1alpha1.SchemeGroupVersion.WithResource("replicas"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Database().V1alpha1().Replicas().Informer()}, nil
+	case databasev1alpha1.SchemeGroupVersion.WithResource("users"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Database().V1alpha1().Users().Informer()}, nil
 
 		// Group=domain.digitalocean.kubeform.com, Version=v1alpha1
 	case domainv1alpha1.SchemeGroupVersion.WithResource("domains"):
