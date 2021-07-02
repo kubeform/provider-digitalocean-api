@@ -21,9 +21,6 @@ package versioned
 import (
 	"fmt"
 
-	discovery "k8s.io/client-go/discovery"
-	rest "k8s.io/client-go/rest"
-	flowcontrol "k8s.io/client-go/util/flowcontrol"
 	appv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/app/v1alpha1"
 	cdnv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/cdn/v1alpha1"
 	certificatev1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/certificate/v1alpha1"
@@ -42,6 +39,10 @@ import (
 	tagv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/tag/v1alpha1"
 	volumev1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/volume/v1alpha1"
 	vpcv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/vpc/v1alpha1"
+
+	discovery "k8s.io/client-go/discovery"
+	rest "k8s.io/client-go/rest"
+	flowcontrol "k8s.io/client-go/util/flowcontrol"
 )
 
 type Interface interface {

@@ -21,8 +21,6 @@ package externalversions
 import (
 	"fmt"
 
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	cache "k8s.io/client-go/tools/cache"
 	v1alpha1 "kubeform.dev/provider-digitalocean-api/apis/app/v1alpha1"
 	cdnv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/cdn/v1alpha1"
 	certificatev1alpha1 "kubeform.dev/provider-digitalocean-api/apis/certificate/v1alpha1"
@@ -41,6 +39,9 @@ import (
 	tagv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/tag/v1alpha1"
 	volumev1alpha1 "kubeform.dev/provider-digitalocean-api/apis/volume/v1alpha1"
 	vpcv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/vpc/v1alpha1"
+
+	schema "k8s.io/apimachinery/pkg/runtime/schema"
+	cache "k8s.io/client-go/tools/cache"
 )
 
 // GenericInformer is type of SharedIndexInformer which will locate and delegate to other

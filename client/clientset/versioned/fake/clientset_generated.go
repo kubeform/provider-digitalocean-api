@@ -19,11 +19,6 @@ limitations under the License.
 package fake
 
 import (
-	"k8s.io/apimachinery/pkg/runtime"
-	"k8s.io/apimachinery/pkg/watch"
-	"k8s.io/client-go/discovery"
-	fakediscovery "k8s.io/client-go/discovery/fake"
-	"k8s.io/client-go/testing"
 	clientset "kubeform.dev/provider-digitalocean-api/client/clientset/versioned"
 	appv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/app/v1alpha1"
 	fakeappv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/app/v1alpha1/fake"
@@ -61,6 +56,12 @@ import (
 	fakevolumev1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/volume/v1alpha1/fake"
 	vpcv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/vpc/v1alpha1"
 	fakevpcv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/vpc/v1alpha1/fake"
+
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/watch"
+	"k8s.io/client-go/discovery"
+	fakediscovery "k8s.io/client-go/discovery/fake"
+	"k8s.io/client-go/testing"
 )
 
 // NewSimpleClientset returns a clientset that will respond with the provided objects.

@@ -19,9 +19,10 @@ limitations under the License.
 package fake
 
 import (
+	v1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/domain/v1alpha1"
+
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
-	v1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/domain/v1alpha1"
 )
 
 type FakeDomainV1alpha1 struct {

@@ -19,11 +19,6 @@ limitations under the License.
 package scheme
 
 import (
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
-	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	appv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/app/v1alpha1"
 	cdnv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/cdn/v1alpha1"
 	certificatev1alpha1 "kubeform.dev/provider-digitalocean-api/apis/certificate/v1alpha1"
@@ -42,6 +37,12 @@ import (
 	tagv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/tag/v1alpha1"
 	volumev1alpha1 "kubeform.dev/provider-digitalocean-api/apis/volume/v1alpha1"
 	vpcv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/vpc/v1alpha1"
+
+	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	runtime "k8s.io/apimachinery/pkg/runtime"
+	schema "k8s.io/apimachinery/pkg/runtime/schema"
+	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
+	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 )
 
 var Scheme = runtime.NewScheme()
