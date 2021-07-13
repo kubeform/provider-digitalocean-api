@@ -42,7 +42,7 @@ type Cdn struct {
 }
 
 type CdnSpec struct {
-	KubeformOutput *CdnSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *CdnSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource CdnSpecResource `json:"resource" tf:"resource"`
 

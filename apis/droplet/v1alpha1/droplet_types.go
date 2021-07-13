@@ -42,7 +42,7 @@ type Droplet struct {
 }
 
 type DropletSpec struct {
-	KubeformOutput *DropletSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DropletSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DropletSpecResource `json:"resource" tf:"resource"`
 

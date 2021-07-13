@@ -42,7 +42,7 @@ type Db struct {
 }
 
 type DbSpec struct {
-	KubeformOutput *DbSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DbSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DbSpecResource `json:"resource" tf:"resource"`
 

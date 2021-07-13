@@ -51,7 +51,7 @@ type FirewallSpecRule struct {
 }
 
 type FirewallSpec struct {
-	KubeformOutput *FirewallSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FirewallSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FirewallSpecResource `json:"resource" tf:"resource"`
 

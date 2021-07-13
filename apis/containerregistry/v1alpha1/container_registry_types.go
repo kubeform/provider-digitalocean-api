@@ -42,7 +42,7 @@ type ContainerRegistry struct {
 }
 
 type ContainerRegistrySpec struct {
-	KubeformOutput *ContainerRegistrySpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ContainerRegistrySpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ContainerRegistrySpecResource `json:"resource" tf:"resource"`
 

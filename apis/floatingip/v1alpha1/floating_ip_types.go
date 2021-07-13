@@ -42,7 +42,7 @@ type FloatingIP struct {
 }
 
 type FloatingIPSpec struct {
-	KubeformOutput *FloatingIPSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *FloatingIPSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource FloatingIPSpecResource `json:"resource" tf:"resource"`
 
