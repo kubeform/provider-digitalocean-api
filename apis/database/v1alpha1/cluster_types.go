@@ -47,7 +47,7 @@ type ClusterSpecMaintenanceWindow struct {
 }
 
 type ClusterSpec struct {
-	KubeformOutput *ClusterSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ClusterSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ClusterSpecResource `json:"resource" tf:"resource"`
 

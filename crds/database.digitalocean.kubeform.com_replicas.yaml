@@ -37,39 +37,6 @@ spec:
             type: object
           spec:
             properties:
-              kubeformOutput:
-                properties:
-                  clusterID:
-                    type: string
-                  database:
-                    type: string
-                  host:
-                    type: string
-                  id:
-                    type: string
-                  name:
-                    type: string
-                  port:
-                    format: int64
-                    type: integer
-                  privateHost:
-                    type: string
-                  privateNetworkUUID:
-                    type: string
-                  region:
-                    type: string
-                  size:
-                    type: string
-                  tags:
-                    items:
-                      type: string
-                    type: array
-                  user:
-                    type: string
-                required:
-                - clusterID
-                - name
-                type: object
               providerRef:
                 description: LocalObjectReference contains enough information to let
                   you locate the referenced object inside the same namespace.
@@ -120,6 +87,39 @@ spec:
                     description: 'Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
                       TODO: Add other useful fields. apiVersion, kind, uid?'
                     type: string
+                type: object
+              state:
+                properties:
+                  clusterID:
+                    type: string
+                  database:
+                    type: string
+                  host:
+                    type: string
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  port:
+                    format: int64
+                    type: integer
+                  privateHost:
+                    type: string
+                  privateNetworkUUID:
+                    type: string
+                  region:
+                    type: string
+                  size:
+                    type: string
+                  tags:
+                    items:
+                      type: string
+                    type: array
+                  user:
+                    type: string
+                required:
+                - clusterID
+                - name
                 type: object
               terminationPolicy:
                 enum:

@@ -87,7 +87,7 @@ type SpacesBucketSpecVersioning struct {
 }
 
 type SpacesBucketSpec struct {
-	KubeformOutput *SpacesBucketSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *SpacesBucketSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource SpacesBucketSpecResource `json:"resource" tf:"resource"`
 

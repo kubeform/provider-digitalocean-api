@@ -80,7 +80,7 @@ type LoadbalancerSpecStickySessions struct {
 }
 
 type LoadbalancerSpec struct {
-	KubeformOutput *LoadbalancerSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *LoadbalancerSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource LoadbalancerSpecResource `json:"resource" tf:"resource"`
 

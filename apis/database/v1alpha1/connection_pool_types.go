@@ -42,7 +42,7 @@ type ConnectionPool struct {
 }
 
 type ConnectionPoolSpec struct {
-	KubeformOutput *ConnectionPoolSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ConnectionPoolSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ConnectionPoolSpecResource `json:"resource" tf:"resource"`
 

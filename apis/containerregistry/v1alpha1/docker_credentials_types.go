@@ -42,7 +42,7 @@ type DockerCredentials struct {
 }
 
 type DockerCredentialsSpec struct {
-	KubeformOutput *DockerCredentialsSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *DockerCredentialsSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource DockerCredentialsSpecResource `json:"resource" tf:"resource"`
 

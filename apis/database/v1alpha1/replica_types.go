@@ -42,7 +42,7 @@ type Replica struct {
 }
 
 type ReplicaSpec struct {
-	KubeformOutput *ReplicaSpecResource `json:"kubeformOutput,omitempty" tf:"-"`
+	State *ReplicaSpecResource `json:"state,omitempty" tf:"-"`
 
 	Resource ReplicaSpecResource `json:"resource" tf:"resource"`
 
