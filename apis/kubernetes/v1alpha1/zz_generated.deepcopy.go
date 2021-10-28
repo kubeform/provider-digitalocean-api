@@ -345,6 +345,11 @@ func (in *ClusterSpecResource) DeepCopyInto(out *ClusterSpecResource) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.Ha != nil {
+		in, out := &in.Ha, &out.Ha
+		*out = new(bool)
+		**out = **in
+	}
 	if in.Ipv4Address != nil {
 		in, out := &in.Ipv4Address, &out.Ipv4Address
 		*out = new(string)

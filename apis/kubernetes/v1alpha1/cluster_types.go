@@ -126,6 +126,8 @@ type ClusterSpecResource struct {
 	// +optional
 	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint"`
 	// +optional
+	Ha *bool `json:"ha,omitempty" tf:"ha"`
+	// +optional
 	Ipv4Address *string `json:"ipv4Address,omitempty" tf:"ipv4_address"`
 	// +optional
 	// +optional

@@ -194,6 +194,39 @@ type AppSpecSpecJob struct {
 	SourceDir *string `json:"sourceDir,omitempty" tf:"source_dir"`
 }
 
+type AppSpecSpecServiceCorsAllowOrigins struct {
+	// Exact string match.
+	// +optional
+	Exact *string `json:"exact,omitempty" tf:"exact"`
+	// Prefix-based match.
+	// +optional
+	Prefix *string `json:"prefix,omitempty" tf:"prefix"`
+	// RE2 style regex-based match.
+	// +optional
+	Regex *string `json:"regex,omitempty" tf:"regex"`
+}
+
+type AppSpecSpecServiceCors struct {
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+	// +optional
+	AllowCredentials *bool `json:"allowCredentials,omitempty" tf:"allow_credentials"`
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+	// +optional
+	AllowHeaders []string `json:"allowHeaders,omitempty" tf:"allow_headers"`
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+	// +optional
+	AllowMethods []string `json:"allowMethods,omitempty" tf:"allow_methods"`
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+	// +optional
+	AllowOrigins *AppSpecSpecServiceCorsAllowOrigins `json:"allowOrigins,omitempty" tf:"allow_origins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+	// +optional
+	ExposeHeaders []string `json:"exposeHeaders,omitempty" tf:"expose_headers"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	// +optional
+	MaxAge *string `json:"maxAge,omitempty" tf:"max_age"`
+}
+
 type AppSpecSpecServiceEnv struct {
 	// The name of the environment variable.
 	// +optional
@@ -286,6 +319,8 @@ type AppSpecSpecService struct {
 	// An optional build command to run while building this component from source.
 	// +optional
 	BuildCommand *string `json:"buildCommand,omitempty" tf:"build_command"`
+	// +optional
+	Cors *AppSpecSpecServiceCors `json:"cors,omitempty" tf:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	// +optional
 	DockerfilePath *string `json:"dockerfilePath,omitempty" tf:"dockerfile_path"`
@@ -325,6 +360,39 @@ type AppSpecSpecService struct {
 	// An optional path to the working directory to use for the build.
 	// +optional
 	SourceDir *string `json:"sourceDir,omitempty" tf:"source_dir"`
+}
+
+type AppSpecSpecStaticSiteCorsAllowOrigins struct {
+	// Exact string match.
+	// +optional
+	Exact *string `json:"exact,omitempty" tf:"exact"`
+	// Prefix-based match.
+	// +optional
+	Prefix *string `json:"prefix,omitempty" tf:"prefix"`
+	// RE2 style regex-based match.
+	// +optional
+	Regex *string `json:"regex,omitempty" tf:"regex"`
+}
+
+type AppSpecSpecStaticSiteCors struct {
+	// Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+	// +optional
+	AllowCredentials *bool `json:"allowCredentials,omitempty" tf:"allow_credentials"`
+	// The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+	// +optional
+	AllowHeaders []string `json:"allowHeaders,omitempty" tf:"allow_headers"`
+	// The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+	// +optional
+	AllowMethods []string `json:"allowMethods,omitempty" tf:"allow_methods"`
+	// The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+	// +optional
+	AllowOrigins *AppSpecSpecStaticSiteCorsAllowOrigins `json:"allowOrigins,omitempty" tf:"allow_origins"`
+	// The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+	// +optional
+	ExposeHeaders []string `json:"exposeHeaders,omitempty" tf:"expose_headers"`
+	// An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+	// +optional
+	MaxAge *string `json:"maxAge,omitempty" tf:"max_age"`
 }
 
 type AppSpecSpecStaticSiteEnv struct {
@@ -388,6 +456,8 @@ type AppSpecSpecStaticSite struct {
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
 	// +optional
 	CatchallDocument *string `json:"catchallDocument,omitempty" tf:"catchall_document"`
+	// +optional
+	Cors *AppSpecSpecStaticSiteCors `json:"cors,omitempty" tf:"cors"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
 	// +optional
 	DockerfilePath *string `json:"dockerfilePath,omitempty" tf:"dockerfile_path"`
@@ -560,6 +630,8 @@ type AppSpec struct {
 }
 
 type AppSpecResource struct {
+	Timeouts *base.ResourceTimeout `json:"timeouts,omitempty" tf:"timeouts"`
+
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// The ID the App's currently active deployment

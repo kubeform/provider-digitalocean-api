@@ -27,45 +27,53 @@ import (
 
 func GetEncoder() map[string]jsoniter.ValEncoder {
 	return map[string]jsoniter.ValEncoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpec{}).Type1()):                   AppSpecSpecCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobGit{}).Type1()):             AppSpecSpecJobGitCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobGithub{}).Type1()):          AppSpecSpecJobGithubCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobGitlab{}).Type1()):          AppSpecSpecJobGitlabCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobImage{}).Type1()):           AppSpecSpecJobImageCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceGit{}).Type1()):         AppSpecSpecServiceGitCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceGithub{}).Type1()):      AppSpecSpecServiceGithubCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceGitlab{}).Type1()):      AppSpecSpecServiceGitlabCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceHealthCheck{}).Type1()): AppSpecSpecServiceHealthCheckCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceImage{}).Type1()):       AppSpecSpecServiceImageCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteGit{}).Type1()):      AppSpecSpecStaticSiteGitCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteGithub{}).Type1()):   AppSpecSpecStaticSiteGithubCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteGitlab{}).Type1()):   AppSpecSpecStaticSiteGitlabCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerGit{}).Type1()):          AppSpecSpecWorkerGitCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerGithub{}).Type1()):       AppSpecSpecWorkerGithubCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerGitlab{}).Type1()):       AppSpecSpecWorkerGitlabCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerImage{}).Type1()):        AppSpecSpecWorkerImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpec{}).Type1()):                           AppSpecSpecCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobGit{}).Type1()):                     AppSpecSpecJobGitCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobGithub{}).Type1()):                  AppSpecSpecJobGithubCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobGitlab{}).Type1()):                  AppSpecSpecJobGitlabCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobImage{}).Type1()):                   AppSpecSpecJobImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceCors{}).Type1()):                AppSpecSpecServiceCorsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceCorsAllowOrigins{}).Type1()):    AppSpecSpecServiceCorsAllowOriginsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceGit{}).Type1()):                 AppSpecSpecServiceGitCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceGithub{}).Type1()):              AppSpecSpecServiceGithubCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceGitlab{}).Type1()):              AppSpecSpecServiceGitlabCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceHealthCheck{}).Type1()):         AppSpecSpecServiceHealthCheckCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceImage{}).Type1()):               AppSpecSpecServiceImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteCors{}).Type1()):             AppSpecSpecStaticSiteCorsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteCorsAllowOrigins{}).Type1()): AppSpecSpecStaticSiteCorsAllowOriginsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteGit{}).Type1()):              AppSpecSpecStaticSiteGitCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteGithub{}).Type1()):           AppSpecSpecStaticSiteGithubCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteGitlab{}).Type1()):           AppSpecSpecStaticSiteGitlabCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerGit{}).Type1()):                  AppSpecSpecWorkerGitCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerGithub{}).Type1()):               AppSpecSpecWorkerGithubCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerGitlab{}).Type1()):               AppSpecSpecWorkerGitlabCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerImage{}).Type1()):                AppSpecSpecWorkerImageCodec{},
 	}
 }
 
 func GetDecoder() map[string]jsoniter.ValDecoder {
 	return map[string]jsoniter.ValDecoder{
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpec{}).Type1()):                   AppSpecSpecCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobGit{}).Type1()):             AppSpecSpecJobGitCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobGithub{}).Type1()):          AppSpecSpecJobGithubCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobGitlab{}).Type1()):          AppSpecSpecJobGitlabCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobImage{}).Type1()):           AppSpecSpecJobImageCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceGit{}).Type1()):         AppSpecSpecServiceGitCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceGithub{}).Type1()):      AppSpecSpecServiceGithubCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceGitlab{}).Type1()):      AppSpecSpecServiceGitlabCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceHealthCheck{}).Type1()): AppSpecSpecServiceHealthCheckCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceImage{}).Type1()):       AppSpecSpecServiceImageCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteGit{}).Type1()):      AppSpecSpecStaticSiteGitCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteGithub{}).Type1()):   AppSpecSpecStaticSiteGithubCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteGitlab{}).Type1()):   AppSpecSpecStaticSiteGitlabCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerGit{}).Type1()):          AppSpecSpecWorkerGitCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerGithub{}).Type1()):       AppSpecSpecWorkerGithubCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerGitlab{}).Type1()):       AppSpecSpecWorkerGitlabCodec{},
-		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerImage{}).Type1()):        AppSpecSpecWorkerImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpec{}).Type1()):                           AppSpecSpecCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobGit{}).Type1()):                     AppSpecSpecJobGitCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobGithub{}).Type1()):                  AppSpecSpecJobGithubCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobGitlab{}).Type1()):                  AppSpecSpecJobGitlabCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecJobImage{}).Type1()):                   AppSpecSpecJobImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceCors{}).Type1()):                AppSpecSpecServiceCorsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceCorsAllowOrigins{}).Type1()):    AppSpecSpecServiceCorsAllowOriginsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceGit{}).Type1()):                 AppSpecSpecServiceGitCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceGithub{}).Type1()):              AppSpecSpecServiceGithubCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceGitlab{}).Type1()):              AppSpecSpecServiceGitlabCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceHealthCheck{}).Type1()):         AppSpecSpecServiceHealthCheckCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceImage{}).Type1()):               AppSpecSpecServiceImageCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteCors{}).Type1()):             AppSpecSpecStaticSiteCorsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteCorsAllowOrigins{}).Type1()): AppSpecSpecStaticSiteCorsAllowOriginsCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteGit{}).Type1()):              AppSpecSpecStaticSiteGitCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteGithub{}).Type1()):           AppSpecSpecStaticSiteGithubCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteGitlab{}).Type1()):           AppSpecSpecStaticSiteGitlabCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerGit{}).Type1()):                  AppSpecSpecWorkerGitCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerGithub{}).Type1()):               AppSpecSpecWorkerGithubCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerGitlab{}).Type1()):               AppSpecSpecWorkerGitlabCodec{},
+		jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecWorkerImage{}).Type1()):                AppSpecSpecWorkerImageCodec{},
 	}
 }
 
@@ -477,6 +485,164 @@ func (AppSpecSpecJobImageCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterat
 }
 
 // +k8s:deepcopy-gen=false
+type AppSpecSpecServiceCorsCodec struct {
+}
+
+func (AppSpecSpecServiceCorsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AppSpecSpecServiceCors)(ptr) == nil
+}
+
+func (AppSpecSpecServiceCorsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AppSpecSpecServiceCors)(ptr)
+	var objs []AppSpecSpecServiceCors
+	if obj != nil {
+		objs = []AppSpecSpecServiceCors{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceCors{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AppSpecSpecServiceCorsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AppSpecSpecServiceCors)(ptr) = AppSpecSpecServiceCors{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AppSpecSpecServiceCors
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceCors{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AppSpecSpecServiceCors)(ptr) = objs[0]
+			} else {
+				*(*AppSpecSpecServiceCors)(ptr) = AppSpecSpecServiceCors{}
+			}
+		} else {
+			*(*AppSpecSpecServiceCors)(ptr) = AppSpecSpecServiceCors{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AppSpecSpecServiceCors
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceCors{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AppSpecSpecServiceCors)(ptr) = obj
+		} else {
+			*(*AppSpecSpecServiceCors)(ptr) = AppSpecSpecServiceCors{}
+		}
+	default:
+		iter.ReportError("decode AppSpecSpecServiceCors", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AppSpecSpecServiceCorsAllowOriginsCodec struct {
+}
+
+func (AppSpecSpecServiceCorsAllowOriginsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AppSpecSpecServiceCorsAllowOrigins)(ptr) == nil
+}
+
+func (AppSpecSpecServiceCorsAllowOriginsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AppSpecSpecServiceCorsAllowOrigins)(ptr)
+	var objs []AppSpecSpecServiceCorsAllowOrigins
+	if obj != nil {
+		objs = []AppSpecSpecServiceCorsAllowOrigins{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceCorsAllowOrigins{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AppSpecSpecServiceCorsAllowOriginsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AppSpecSpecServiceCorsAllowOrigins)(ptr) = AppSpecSpecServiceCorsAllowOrigins{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AppSpecSpecServiceCorsAllowOrigins
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceCorsAllowOrigins{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AppSpecSpecServiceCorsAllowOrigins)(ptr) = objs[0]
+			} else {
+				*(*AppSpecSpecServiceCorsAllowOrigins)(ptr) = AppSpecSpecServiceCorsAllowOrigins{}
+			}
+		} else {
+			*(*AppSpecSpecServiceCorsAllowOrigins)(ptr) = AppSpecSpecServiceCorsAllowOrigins{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AppSpecSpecServiceCorsAllowOrigins
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecServiceCorsAllowOrigins{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AppSpecSpecServiceCorsAllowOrigins)(ptr) = obj
+		} else {
+			*(*AppSpecSpecServiceCorsAllowOrigins)(ptr) = AppSpecSpecServiceCorsAllowOrigins{}
+		}
+	default:
+		iter.ReportError("decode AppSpecSpecServiceCorsAllowOrigins", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
 type AppSpecSpecServiceGitCodec struct {
 }
 
@@ -868,6 +1034,164 @@ func (AppSpecSpecServiceImageCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.It
 		}
 	default:
 		iter.ReportError("decode AppSpecSpecServiceImage", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AppSpecSpecStaticSiteCorsCodec struct {
+}
+
+func (AppSpecSpecStaticSiteCorsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AppSpecSpecStaticSiteCors)(ptr) == nil
+}
+
+func (AppSpecSpecStaticSiteCorsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AppSpecSpecStaticSiteCors)(ptr)
+	var objs []AppSpecSpecStaticSiteCors
+	if obj != nil {
+		objs = []AppSpecSpecStaticSiteCors{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteCors{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AppSpecSpecStaticSiteCorsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AppSpecSpecStaticSiteCors)(ptr) = AppSpecSpecStaticSiteCors{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AppSpecSpecStaticSiteCors
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteCors{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AppSpecSpecStaticSiteCors)(ptr) = objs[0]
+			} else {
+				*(*AppSpecSpecStaticSiteCors)(ptr) = AppSpecSpecStaticSiteCors{}
+			}
+		} else {
+			*(*AppSpecSpecStaticSiteCors)(ptr) = AppSpecSpecStaticSiteCors{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AppSpecSpecStaticSiteCors
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteCors{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AppSpecSpecStaticSiteCors)(ptr) = obj
+		} else {
+			*(*AppSpecSpecStaticSiteCors)(ptr) = AppSpecSpecStaticSiteCors{}
+		}
+	default:
+		iter.ReportError("decode AppSpecSpecStaticSiteCors", "unexpected JSON type")
+	}
+}
+
+// +k8s:deepcopy-gen=false
+type AppSpecSpecStaticSiteCorsAllowOriginsCodec struct {
+}
+
+func (AppSpecSpecStaticSiteCorsAllowOriginsCodec) IsEmpty(ptr unsafe.Pointer) bool {
+	return (*AppSpecSpecStaticSiteCorsAllowOrigins)(ptr) == nil
+}
+
+func (AppSpecSpecStaticSiteCorsAllowOriginsCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
+	obj := (*AppSpecSpecStaticSiteCorsAllowOrigins)(ptr)
+	var objs []AppSpecSpecStaticSiteCorsAllowOrigins
+	if obj != nil {
+		objs = []AppSpecSpecStaticSiteCorsAllowOrigins{*obj}
+	}
+
+	jsonit := jsoniter.Config{
+		EscapeHTML:             true,
+		SortMapKeys:            true,
+		ValidateJsonRawMessage: true,
+		TagKey:                 "tf",
+		TypeEncoders:           getEncodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteCorsAllowOrigins{}).Type1())),
+	}.Froze()
+
+	byt, _ := jsonit.Marshal(objs)
+
+	stream.Write(byt)
+}
+
+func (AppSpecSpecStaticSiteCorsAllowOriginsCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
+	switch iter.WhatIsNext() {
+	case jsoniter.NilValue:
+		iter.Skip()
+		*(*AppSpecSpecStaticSiteCorsAllowOrigins)(ptr) = AppSpecSpecStaticSiteCorsAllowOrigins{}
+		return
+	case jsoniter.ArrayValue:
+		objsByte := iter.SkipAndReturnBytes()
+		if len(objsByte) > 0 {
+			var objs []AppSpecSpecStaticSiteCorsAllowOrigins
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteCorsAllowOrigins{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objsByte, &objs)
+
+			if len(objs) > 0 {
+				*(*AppSpecSpecStaticSiteCorsAllowOrigins)(ptr) = objs[0]
+			} else {
+				*(*AppSpecSpecStaticSiteCorsAllowOrigins)(ptr) = AppSpecSpecStaticSiteCorsAllowOrigins{}
+			}
+		} else {
+			*(*AppSpecSpecStaticSiteCorsAllowOrigins)(ptr) = AppSpecSpecStaticSiteCorsAllowOrigins{}
+		}
+	case jsoniter.ObjectValue:
+		objByte := iter.SkipAndReturnBytes()
+		if len(objByte) > 0 {
+			var obj AppSpecSpecStaticSiteCorsAllowOrigins
+
+			jsonit := jsoniter.Config{
+				EscapeHTML:             true,
+				SortMapKeys:            true,
+				ValidateJsonRawMessage: true,
+				TagKey:                 "tf",
+				TypeDecoders:           getDecodersWithout(jsoniter.MustGetKind(reflect2.TypeOf(AppSpecSpecStaticSiteCorsAllowOrigins{}).Type1())),
+			}.Froze()
+			jsonit.Unmarshal(objByte, &obj)
+
+			*(*AppSpecSpecStaticSiteCorsAllowOrigins)(ptr) = obj
+		} else {
+			*(*AppSpecSpecStaticSiteCorsAllowOrigins)(ptr) = AppSpecSpecStaticSiteCorsAllowOrigins{}
+		}
+	default:
+		iter.ReportError("decode AppSpecSpecStaticSiteCorsAllowOrigins", "unexpected JSON type")
 	}
 }
 

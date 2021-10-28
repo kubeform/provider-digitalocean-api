@@ -33,6 +33,7 @@ import (
 	floatingipv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/floatingip/v1alpha1"
 	kubernetesv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/kubernetes/v1alpha1"
 	loadbalancerv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/loadbalancer/v1alpha1"
+	monitorv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/monitor/v1alpha1"
 	projectv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/project/v1alpha1"
 	recordv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/record/v1alpha1"
 	spacesbucketv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/spacesbucket/v1alpha1"
@@ -60,6 +61,7 @@ type Interface interface {
 	FloatingipV1alpha1() floatingipv1alpha1.FloatingipV1alpha1Interface
 	KubernetesV1alpha1() kubernetesv1alpha1.KubernetesV1alpha1Interface
 	LoadbalancerV1alpha1() loadbalancerv1alpha1.LoadbalancerV1alpha1Interface
+	MonitorV1alpha1() monitorv1alpha1.MonitorV1alpha1Interface
 	ProjectV1alpha1() projectv1alpha1.ProjectV1alpha1Interface
 	RecordV1alpha1() recordv1alpha1.RecordV1alpha1Interface
 	SpacesbucketV1alpha1() spacesbucketv1alpha1.SpacesbucketV1alpha1Interface
@@ -85,6 +87,7 @@ type Clientset struct {
 	floatingipV1alpha1        *floatingipv1alpha1.FloatingipV1alpha1Client
 	kubernetesV1alpha1        *kubernetesv1alpha1.KubernetesV1alpha1Client
 	loadbalancerV1alpha1      *loadbalancerv1alpha1.LoadbalancerV1alpha1Client
+	monitorV1alpha1           *monitorv1alpha1.MonitorV1alpha1Client
 	projectV1alpha1           *projectv1alpha1.ProjectV1alpha1Client
 	recordV1alpha1            *recordv1alpha1.RecordV1alpha1Client
 	spacesbucketV1alpha1      *spacesbucketv1alpha1.SpacesbucketV1alpha1Client
@@ -152,6 +155,11 @@ func (c *Clientset) KubernetesV1alpha1() kubernetesv1alpha1.KubernetesV1alpha1In
 // LoadbalancerV1alpha1 retrieves the LoadbalancerV1alpha1Client
 func (c *Clientset) LoadbalancerV1alpha1() loadbalancerv1alpha1.LoadbalancerV1alpha1Interface {
 	return c.loadbalancerV1alpha1
+}
+
+// MonitorV1alpha1 retrieves the MonitorV1alpha1Client
+func (c *Clientset) MonitorV1alpha1() monitorv1alpha1.MonitorV1alpha1Interface {
+	return c.monitorV1alpha1
 }
 
 // ProjectV1alpha1 retrieves the ProjectV1alpha1Client
@@ -258,6 +266,10 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 	if err != nil {
 		return nil, err
 	}
+	cs.monitorV1alpha1, err = monitorv1alpha1.NewForConfig(&configShallowCopy)
+	if err != nil {
+		return nil, err
+	}
 	cs.projectV1alpha1, err = projectv1alpha1.NewForConfig(&configShallowCopy)
 	if err != nil {
 		return nil, err
@@ -310,6 +322,7 @@ func NewForConfigOrDie(c *rest.Config) *Clientset {
 	cs.floatingipV1alpha1 = floatingipv1alpha1.NewForConfigOrDie(c)
 	cs.kubernetesV1alpha1 = kubernetesv1alpha1.NewForConfigOrDie(c)
 	cs.loadbalancerV1alpha1 = loadbalancerv1alpha1.NewForConfigOrDie(c)
+	cs.monitorV1alpha1 = monitorv1alpha1.NewForConfigOrDie(c)
 	cs.projectV1alpha1 = projectv1alpha1.NewForConfigOrDie(c)
 	cs.recordV1alpha1 = recordv1alpha1.NewForConfigOrDie(c)
 	cs.spacesbucketV1alpha1 = spacesbucketv1alpha1.NewForConfigOrDie(c)
@@ -337,6 +350,7 @@ func New(c rest.Interface) *Clientset {
 	cs.floatingipV1alpha1 = floatingipv1alpha1.New(c)
 	cs.kubernetesV1alpha1 = kubernetesv1alpha1.New(c)
 	cs.loadbalancerV1alpha1 = loadbalancerv1alpha1.New(c)
+	cs.monitorV1alpha1 = monitorv1alpha1.New(c)
 	cs.projectV1alpha1 = projectv1alpha1.New(c)
 	cs.recordV1alpha1 = recordv1alpha1.New(c)
 	cs.spacesbucketV1alpha1 = spacesbucketv1alpha1.New(c)

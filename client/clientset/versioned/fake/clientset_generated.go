@@ -44,6 +44,8 @@ import (
 	fakekubernetesv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/kubernetes/v1alpha1/fake"
 	loadbalancerv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/loadbalancer/v1alpha1"
 	fakeloadbalancerv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/loadbalancer/v1alpha1/fake"
+	monitorv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/monitor/v1alpha1"
+	fakemonitorv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/monitor/v1alpha1/fake"
 	projectv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/project/v1alpha1"
 	fakeprojectv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/project/v1alpha1/fake"
 	recordv1alpha1 "kubeform.dev/provider-digitalocean-api/client/clientset/versioned/typed/record/v1alpha1"
@@ -171,6 +173,11 @@ func (c *Clientset) KubernetesV1alpha1() kubernetesv1alpha1.KubernetesV1alpha1In
 // LoadbalancerV1alpha1 retrieves the LoadbalancerV1alpha1Client
 func (c *Clientset) LoadbalancerV1alpha1() loadbalancerv1alpha1.LoadbalancerV1alpha1Interface {
 	return &fakeloadbalancerv1alpha1.FakeLoadbalancerV1alpha1{Fake: &c.Fake}
+}
+
+// MonitorV1alpha1 retrieves the MonitorV1alpha1Client
+func (c *Clientset) MonitorV1alpha1() monitorv1alpha1.MonitorV1alpha1Interface {
+	return &fakemonitorv1alpha1.FakeMonitorV1alpha1{Fake: &c.Fake}
 }
 
 // ProjectV1alpha1 retrieves the ProjectV1alpha1Client
