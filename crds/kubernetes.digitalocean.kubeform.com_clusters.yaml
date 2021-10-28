@@ -65,6 +65,8 @@ spec:
                     type: string
                   endpoint:
                     type: string
+                  ha:
+                    type: boolean
                   id:
                     type: string
                   ipv4Address:
@@ -229,6 +231,8 @@ spec:
                     type: string
                   endpoint:
                     type: string
+                  ha:
+                    type: boolean
                   id:
                     type: string
                   ipv4Address:

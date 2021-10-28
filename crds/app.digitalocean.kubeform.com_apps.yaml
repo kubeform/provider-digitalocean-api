@@ -276,6 +276,56 @@ spec:
                               description: An optional build command to run while
                                 building this component from source.
                               type: string
+                            cors:
+                              properties:
+                                allowCredentials:
+                                  description: Whether browsers should expose the
+                                    response to the client-side JavaScript code when
+                                    the request’s credentials mode is `include`. This
+                                    configures the Access-Control-Allow-Credentials
+                                    header.
+                                  type: boolean
+                                allowHeaders:
+                                  description: The set of allowed HTTP request headers.
+                                    This configures the Access-Control-Allow-Headers
+                                    header.
+                                  items:
+                                    type: string
+                                  type: array
+                                allowMethods:
+                                  description: The set of allowed HTTP methods. This
+                                    configures the Access-Control-Allow-Methods header.
+                                  items:
+                                    type: string
+                                  type: array
+                                allowOrigins:
+                                  description: The set of allowed CORS origins. This
+                                    configures the Access-Control-Allow-Origin header.
+                                  properties:
+                                    exact:
+                                      description: Exact string match.
+                                      type: string
+                                    prefix:
+                                      description: Prefix-based match.
+                                      type: string
+                                    regex:
+                                      description: RE2 style regex-based match.
+                                      type: string
+                                  type: object
+                                exposeHeaders:
+                                  description: The set of HTTP response headers that
+                                    browsers are allowed to access. This configures
+                                    the Access-Control-Expose-Headers header.
+                                  items:
+                                    type: string
+                                  type: array
+                                maxAge:
+                                  description: 'An optional duration specifying how
+                                    long browsers can cache the results of a preflight
+                                    request. This configures the Access-Control-Max-Age
+                                    header. Example: `5h30m`.'
+                                  type: string
+                              type: object
                             dockerfilePath:
                               description: The path to a Dockerfile relative to the
                                 root of the repo. If set, overrides usage of buildpacks.
@@ -444,6 +494,56 @@ spec:
                                 fallback for any requests to documents that are not
                                 found when serving this static site.
                               type: string
+                            cors:
+                              properties:
+                                allowCredentials:
+                                  description: Whether browsers should expose the
+                                    response to the client-side JavaScript code when
+                                    the request’s credentials mode is `include`. This
+                                    configures the Access-Control-Allow-Credentials
+                                    header.
+                                  type: boolean
+                                allowHeaders:
+                                  description: The set of allowed HTTP request headers.
+                                    This configures the Access-Control-Allow-Headers
+                                    header.
+                                  items:
+                                    type: string
+                                  type: array
+                                allowMethods:
+                                  description: The set of allowed HTTP methods. This
+                                    configures the Access-Control-Allow-Methods header.
+                                  items:
+                                    type: string
+                                  type: array
+                                allowOrigins:
+                                  description: The set of allowed CORS origins. This
+                                    configures the Access-Control-Allow-Origin header.
+                                  properties:
+                                    exact:
+                                      description: Exact string match.
+                                      type: string
+                                    prefix:
+                                      description: Prefix-based match.
+                                      type: string
+                                    regex:
+                                      description: RE2 style regex-based match.
+                                      type: string
+                                  type: object
+                                exposeHeaders:
+                                  description: The set of HTTP response headers that
+                                    browsers are allowed to access. This configures
+                                    the Access-Control-Expose-Headers header.
+                                  items:
+                                    type: string
+                                  type: array
+                                maxAge:
+                                  description: 'An optional duration specifying how
+                                    long browsers can cache the results of a preflight
+                                    request. This configures the Access-Control-Max-Age
+                                    header. Example: `5h30m`.'
+                                  type: string
+                              type: object
                             dockerfilePath:
                               description: The path to a Dockerfile relative to the
                                 root of the repo. If set, overrides usage of buildpacks.
@@ -651,6 +751,44 @@ spec:
                         type: array
                     required:
                     - name
+                    type: object
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
                     type: object
                   updatedAt:
                     description: The date and time of when the App was last updated
@@ -886,6 +1024,56 @@ spec:
                               description: An optional build command to run while
                                 building this component from source.
                               type: string
+                            cors:
+                              properties:
+                                allowCredentials:
+                                  description: Whether browsers should expose the
+                                    response to the client-side JavaScript code when
+                                    the request’s credentials mode is `include`. This
+                                    configures the Access-Control-Allow-Credentials
+                                    header.
+                                  type: boolean
+                                allowHeaders:
+                                  description: The set of allowed HTTP request headers.
+                                    This configures the Access-Control-Allow-Headers
+                                    header.
+                                  items:
+                                    type: string
+                                  type: array
+                                allowMethods:
+                                  description: The set of allowed HTTP methods. This
+                                    configures the Access-Control-Allow-Methods header.
+                                  items:
+                                    type: string
+                                  type: array
+                                allowOrigins:
+                                  description: The set of allowed CORS origins. This
+                                    configures the Access-Control-Allow-Origin header.
+                                  properties:
+                                    exact:
+                                      description: Exact string match.
+                                      type: string
+                                    prefix:
+                                      description: Prefix-based match.
+                                      type: string
+                                    regex:
+                                      description: RE2 style regex-based match.
+                                      type: string
+                                  type: object
+                                exposeHeaders:
+                                  description: The set of HTTP response headers that
+                                    browsers are allowed to access. This configures
+                                    the Access-Control-Expose-Headers header.
+                                  items:
+                                    type: string
+                                  type: array
+                                maxAge:
+                                  description: 'An optional duration specifying how
+                                    long browsers can cache the results of a preflight
+                                    request. This configures the Access-Control-Max-Age
+                                    header. Example: `5h30m`.'
+                                  type: string
+                              type: object
                             dockerfilePath:
                               description: The path to a Dockerfile relative to the
                                 root of the repo. If set, overrides usage of buildpacks.
@@ -1054,6 +1242,56 @@ spec:
                                 fallback for any requests to documents that are not
                                 found when serving this static site.
                               type: string
+                            cors:
+                              properties:
+                                allowCredentials:
+                                  description: Whether browsers should expose the
+                                    response to the client-side JavaScript code when
+                                    the request’s credentials mode is `include`. This
+                                    configures the Access-Control-Allow-Credentials
+                                    header.
+                                  type: boolean
+                                allowHeaders:
+                                  description: The set of allowed HTTP request headers.
+                                    This configures the Access-Control-Allow-Headers
+                                    header.
+                                  items:
+                                    type: string
+                                  type: array
+                                allowMethods:
+                                  description: The set of allowed HTTP methods. This
+                                    configures the Access-Control-Allow-Methods header.
+                                  items:
+                                    type: string
+                                  type: array
+                                allowOrigins:
+                                  description: The set of allowed CORS origins. This
+                                    configures the Access-Control-Allow-Origin header.
+                                  properties:
+                                    exact:
+                                      description: Exact string match.
+                                      type: string
+                                    prefix:
+                                      description: Prefix-based match.
+                                      type: string
+                                    regex:
+                                      description: RE2 style regex-based match.
+                                      type: string
+                                  type: object
+                                exposeHeaders:
+                                  description: The set of HTTP response headers that
+                                    browsers are allowed to access. This configures
+                                    the Access-Control-Expose-Headers header.
+                                  items:
+                                    type: string
+                                  type: array
+                                maxAge:
+                                  description: 'An optional duration specifying how
+                                    long browsers can cache the results of a preflight
+                                    request. This configures the Access-Control-Max-Age
+                                    header. Example: `5h30m`.'
+                                  type: string
+                              type: object
                             dockerfilePath:
                               description: The path to a Dockerfile relative to the
                                 root of the repo. If set, overrides usage of buildpacks.
@@ -1261,6 +1499,44 @@ spec:
                         type: array
                     required:
                     - name
+                    type: object
+                  timeouts:
+                    properties:
+                      create:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      default:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      delete:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      read:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
+                      update:
+                        description: A Duration represents the elapsed time between
+                          two instants as an int64 nanosecond count. The representation
+                          limits the largest representable duration to approximately
+                          290 years.
+                        format: int64
+                        type: integer
                     type: object
                   updatedAt:
                     description: The date and time of when the App was last updated

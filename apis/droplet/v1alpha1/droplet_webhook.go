@@ -42,12 +42,13 @@ func (r *Droplet) SetupWebhookWithManager(mgr ctrl.Manager) error {
 var _ webhook.Validator = &Droplet{}
 
 var dropletForceNewList = map[string]bool{
-	"/image":      true,
-	"/monitoring": true,
-	"/region":     true,
-	"/ssh_keys":   true,
-	"/user_data":  true,
-	"/vpc_uuid":   true,
+	"/droplet_agent": true,
+	"/image":         true,
+	"/monitoring":    true,
+	"/region":        true,
+	"/ssh_keys":      true,
+	"/user_data":     true,
+	"/vpc_uuid":      true,
 }
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type

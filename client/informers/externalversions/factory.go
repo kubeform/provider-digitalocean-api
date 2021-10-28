@@ -37,6 +37,7 @@ import (
 	internalinterfaces "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/internalinterfaces"
 	kubernetes "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/kubernetes"
 	loadbalancer "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/loadbalancer"
+	monitor "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/monitor"
 	project "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/project"
 	record "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/record"
 	spacesbucket "kubeform.dev/provider-digitalocean-api/client/informers/externalversions/spacesbucket"
@@ -203,6 +204,7 @@ type SharedInformerFactory interface {
 	Floatingip() floatingip.Interface
 	Kubernetes() kubernetes.Interface
 	Loadbalancer() loadbalancer.Interface
+	Monitor() monitor.Interface
 	Project() project.Interface
 	Record() record.Interface
 	Spacesbucket() spacesbucket.Interface
@@ -258,6 +260,10 @@ func (f *sharedInformerFactory) Kubernetes() kubernetes.Interface {
 
 func (f *sharedInformerFactory) Loadbalancer() loadbalancer.Interface {
 	return loadbalancer.New(f, f.namespace, f.tweakListOptions)
+}
+
+func (f *sharedInformerFactory) Monitor() monitor.Interface {
+	return monitor.New(f, f.namespace, f.tweakListOptions)
 }
 
 func (f *sharedInformerFactory) Project() project.Interface {

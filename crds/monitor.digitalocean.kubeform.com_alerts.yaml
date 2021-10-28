@@ -5,14 +5,14 @@ metadata:
   labels:
     app.kubernetes.io/name: digitalocean.kubeform.com
     app.kubernetes.io/part-of: kubeform.com
-  name: droplets.droplet.digitalocean.kubeform.com
+  name: alerts.monitor.digitalocean.kubeform.com
 spec:
-  group: droplet.digitalocean.kubeform.com
+  group: monitor.digitalocean.kubeform.com
   names:
-    kind: Droplet
-    listKind: DropletList
-    plural: droplets
-    singular: droplet
+    kind: Alert
+    listKind: AlertList
+    plural: alerts
+    singular: alert
   scope: Namespaced
   versions:
   - additionalPrinterColumns:
@@ -57,159 +57,131 @@ spec:
                 type: object
               resource:
                 properties:
-                  backups:
+                  alerts:
+                    description: List with details how to notify about the alert.
+                      Support for Slack or email.
+                    properties:
+                      email:
+                        description: List of email addresses to sent notifications
+                          to
+                        items:
+                          type: string
+                        type: array
+                      slack:
+                        items:
+                          properties:
+                            channel:
+                              description: The Slack channel to send alerts to
+                              type: string
+                            url:
+                              description: The webhook URL for Slack
+                              type: string
+                          required:
+                          - channel
+                          - url
+                          type: object
+                        type: array
+                    type: object
+                  compare:
+                    description: The comparison operator to use for value
+                    type: string
+                  description:
+                    description: Description of the alert policy
+                    type: string
+                  enabled:
                     type: boolean
-                  createdAt:
-                    type: string
-                  disk:
-                    format: int64
-                    type: integer
-                  dropletAgent:
-                    type: boolean
-                  gracefulShutdown:
-                    type: boolean
-                  id:
-                    type: string
-                  image:
-                    type: string
-                  ipv4Address:
-                    type: string
-                  ipv4AddressPrivate:
-                    type: string
-                  ipv6:
-                    type: boolean
-                  ipv6Address:
-                    type: string
-                  locked:
-                    type: boolean
-                  memory:
-                    format: int64
-                    type: integer
-                  monitoring:
-                    type: boolean
-                  name:
-                    type: string
-                  priceHourly:
-                    format: double
-                    type: number
-                  priceMonthly:
-                    format: double
-                    type: number
-                  privateNetworking:
-                    description: Deprecated
-                    type: boolean
-                  region:
-                    type: string
-                  resizeDisk:
-                    type: boolean
-                  size:
-                    type: string
-                  sshKeys:
+                  entities:
+                    description: The droplets to apply the alert policy to
                     items:
                       type: string
+                    minItems: 1
                     type: array
-                  status:
+                  id:
                     type: string
                   tags:
                     items:
                       type: string
                     type: array
-                  urn:
+                  type:
                     type: string
-                  userData:
+                  uuid:
                     type: string
-                  vcpus:
-                    format: int64
-                    type: integer
-                  volumeIDS:
-                    items:
-                      type: string
-                    type: array
-                  vpcUUID:
+                  value:
+                    format: double
+                    type: number
+                  window:
                     type: string
                 required:
-                - image
-                - name
-                - region
-                - size
+                - alerts
+                - compare
+                - description
+                - type
+                - value
+                - window
                 type: object
               state:
                 properties:
-                  backups:
+                  alerts:
+                    description: List with details how to notify about the alert.
+                      Support for Slack or email.
+                    properties:
+                      email:
+                        description: List of email addresses to sent notifications
+                          to
+                        items:
+                          type: string
+                        type: array
+                      slack:
+                        items:
+                          properties:
+                            channel:
+                              description: The Slack channel to send alerts to
+                              type: string
+                            url:
+                              description: The webhook URL for Slack
+                              type: string
+                          required:
+                          - channel
+                          - url
+                          type: object
+                        type: array
+                    type: object
+                  compare:
+                    description: The comparison operator to use for value
+                    type: string
+                  description:
+                    description: Description of the alert policy
+                    type: string
+                  enabled:
                     type: boolean
-                  createdAt:
-                    type: string
-                  disk:
-                    format: int64
-                    type: integer
-                  dropletAgent:
-                    type: boolean
-                  gracefulShutdown:
-                    type: boolean
-                  id:
-                    type: string
-                  image:
-                    type: string
-                  ipv4Address:
-                    type: string
-                  ipv4AddressPrivate:
-                    type: string
-                  ipv6:
-                    type: boolean
-                  ipv6Address:
-                    type: string
-                  locked:
-                    type: boolean
-                  memory:
-                    format: int64
-                    type: integer
-                  monitoring:
-                    type: boolean
-                  name:
-                    type: string
-                  priceHourly:
-                    format: double
-                    type: number
-                  priceMonthly:
-                    format: double
-                    type: number
-                  privateNetworking:
-                    description: Deprecated
-                    type: boolean
-                  region:
-                    type: string
-                  resizeDisk:
-                    type: boolean
-                  size:
-                    type: string
-                  sshKeys:
+                  entities:
+                    description: The droplets to apply the alert policy to
                     items:
                       type: string
+                    minItems: 1
                     type: array
-                  status:
+                  id:
                     type: string
                   tags:
                     items:
                       type: string
                     type: array
-                  urn:
+                  type:
                     type: string
-                  userData:
+                  uuid:
                     type: string
-                  vcpus:
-                    format: int64
-                    type: integer
-                  volumeIDS:
-                    items:
-                      type: string
-                    type: array
-                  vpcUUID:
+                  value:
+                    format: double
+                    type: number
+                  window:
                     type: string
                 required:
-                - image
-                - name
-                - region
-                - size
+                - alerts
+                - compare
+                - description
+                - type
+                - value
+                - window
                 type: object
               terminationPolicy:
                 enum:

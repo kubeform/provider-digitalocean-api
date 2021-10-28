@@ -33,6 +33,7 @@ import (
 	floatingipv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/floatingip/v1alpha1"
 	kubernetesv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/kubernetes/v1alpha1"
 	loadbalancerv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/loadbalancer/v1alpha1"
+	monitorv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/monitor/v1alpha1"
 	projectv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/project/v1alpha1"
 	recordv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/record/v1alpha1"
 	spacesbucketv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/spacesbucket/v1alpha1"
@@ -136,6 +137,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		// Group=loadbalancer.digitalocean.kubeform.com, Version=v1alpha1
 	case loadbalancerv1alpha1.SchemeGroupVersion.WithResource("loadbalancers"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Loadbalancer().V1alpha1().Loadbalancers().Informer()}, nil
+
+		// Group=monitor.digitalocean.kubeform.com, Version=v1alpha1
+	case monitorv1alpha1.SchemeGroupVersion.WithResource("alerts"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Monitor().V1alpha1().Alerts().Informer()}, nil
 
 		// Group=project.digitalocean.kubeform.com, Version=v1alpha1
 	case projectv1alpha1.SchemeGroupVersion.WithResource("projects"):

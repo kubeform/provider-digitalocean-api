@@ -134,6 +134,16 @@ func (in *DropletSpecResource) DeepCopyInto(out *DropletSpecResource) {
 		*out = new(int64)
 		**out = **in
 	}
+	if in.DropletAgent != nil {
+		in, out := &in.DropletAgent, &out.DropletAgent
+		*out = new(bool)
+		**out = **in
+	}
+	if in.GracefulShutdown != nil {
+		in, out := &in.GracefulShutdown, &out.GracefulShutdown
+		*out = new(bool)
+		**out = **in
+	}
 	if in.Image != nil {
 		in, out := &in.Image, &out.Image
 		*out = new(string)

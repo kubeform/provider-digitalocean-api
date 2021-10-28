@@ -31,6 +31,7 @@ import (
 	floatingipv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/floatingip/v1alpha1"
 	kubernetesv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/kubernetes/v1alpha1"
 	loadbalancerv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/loadbalancer/v1alpha1"
+	monitorv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/monitor/v1alpha1"
 	projectv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/project/v1alpha1"
 	recordv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/record/v1alpha1"
 	spacesbucketv1alpha1 "kubeform.dev/provider-digitalocean-api/apis/spacesbucket/v1alpha1"
@@ -62,6 +63,7 @@ var localSchemeBuilder = runtime.SchemeBuilder{
 	floatingipv1alpha1.AddToScheme,
 	kubernetesv1alpha1.AddToScheme,
 	loadbalancerv1alpha1.AddToScheme,
+	monitorv1alpha1.AddToScheme,
 	projectv1alpha1.AddToScheme,
 	recordv1alpha1.AddToScheme,
 	spacesbucketv1alpha1.AddToScheme,

@@ -31,35 +31,30 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
 )
 
-func (r *Cluster) SetupWebhookWithManager(mgr ctrl.Manager) error {
+func (r *Alert) SetupWebhookWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewWebhookManagedBy(mgr).
 		For(r).
 		Complete()
 }
 
-//+kubebuilder:webhook:verbs=create;update;delete,path=/validate-kubernetes-digitalocean-kubeform-com-v1alpha1-cluster,mutating=false,failurePolicy=fail,groups=kubernetes.digitalocean.kubeform.com,resources=clusters,versions=v1alpha1,name=cluster.kubernetes.digitalocean.kubeform.io,sideEffects=None,admissionReviewVersions=v1
+//+kubebuilder:webhook:verbs=create;update;delete,path=/validate-monitor-digitalocean-kubeform-com-v1alpha1-alert,mutating=false,failurePolicy=fail,groups=monitor.digitalocean.kubeform.com,resources=alerts,versions=v1alpha1,name=alert.monitor.digitalocean.kubeform.io,sideEffects=None,admissionReviewVersions=v1
 
-var _ webhook.Validator = &Cluster{}
+var _ webhook.Validator = &Alert{}
 
-var clusterForceNewList = map[string]bool{
-	"/ha":               true,
-	"/node_pool/*/size": true,
-	"/region":           true,
-	"/vpc_uuid":         true,
-}
+var alertForceNewList = map[string]bool{}
 
 // ValidateCreate implements webhook.Validator so a webhook will be registered for the type
-func (r *Cluster) ValidateCreate() error {
+func (r *Alert) ValidateCreate() error {
 	return nil
 }
 
 // ValidateUpdate implements webhook.Validator so a webhook will be registered for the type
-func (r *Cluster) ValidateUpdate(old runtime.Object) error {
+func (r *Alert) ValidateUpdate(old runtime.Object) error {
 	if r.Spec.Resource.ID == "" {
 		return nil
 	}
 	newObj := r.Spec.Resource
-	res := old.(*Cluster)
+	res := old.(*Alert)
 	oldObj := res.Spec.Resource
 
 	jsnitr := jsoniter.Config{
@@ -91,7 +86,7 @@ func (r *Cluster) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range clusterForceNewList {
+	for key := range alertForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false
@@ -99,16 +94,16 @@ func (r *Cluster) ValidateUpdate(old runtime.Object) error {
 		util.CheckIfAnyDifference("", keySplit, 0, length, &checkIfAnyDif, tempNew, tempOld, tempNew)
 
 		if checkIfAnyDif && r.Spec.UpdatePolicy == base.UpdatePolicyDoNotDestroy {
-			return fmt.Errorf(`cluster "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
+			return fmt.Errorf(`alert "%v/%v" immutable field can't be updated. To update, change spec.updatePolicy to Destroy`, r.Namespace, r.Name)
 		}
 	}
 	return nil
 }
 
 // ValidateDelete implements webhook.Validator so a webhook will be registered for the type
-func (r *Cluster) ValidateDelete() error {
+func (r *Alert) ValidateDelete() error {
 	if r.Spec.TerminationPolicy == base.TerminationPolicyDoNotTerminate {
-		return fmt.Errorf(`cluster "%v/%v" can't be terminated. To delete, change spec.terminationPolicy to Delete`, r.Namespace, r.Name)
+		return fmt.Errorf(`alert "%v/%v" can't be terminated. To delete, change spec.terminationPolicy to Delete`, r.Namespace, r.Name)
 	}
 	return nil
 }

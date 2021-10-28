@@ -63,8 +63,12 @@ type DropletSpecResource struct {
 	// +optional
 	CreatedAt *string `json:"createdAt,omitempty" tf:"created_at"`
 	// +optional
-	Disk  *int64  `json:"disk,omitempty" tf:"disk"`
-	Image *string `json:"image" tf:"image"`
+	Disk *int64 `json:"disk,omitempty" tf:"disk"`
+	// +optional
+	DropletAgent *bool `json:"dropletAgent,omitempty" tf:"droplet_agent"`
+	// +optional
+	GracefulShutdown *bool   `json:"gracefulShutdown,omitempty" tf:"graceful_shutdown"`
+	Image            *string `json:"image" tf:"image"`
 	// +optional
 	Ipv4Address *string `json:"ipv4Address,omitempty" tf:"ipv4_address"`
 	// +optional
@@ -85,6 +89,7 @@ type DropletSpecResource struct {
 	// +optional
 	PriceMonthly *float64 `json:"priceMonthly,omitempty" tf:"price_monthly"`
 	// +optional
+	// Deprecated
 	PrivateNetworking *bool   `json:"privateNetworking,omitempty" tf:"private_networking"`
 	Region            *string `json:"region" tf:"region"`
 	// +optional

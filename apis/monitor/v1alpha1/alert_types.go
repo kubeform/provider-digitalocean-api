@@ -34,17 +34,32 @@ import (
 // +kubebuilder:subresource:status
 // +kubebuilder:printcolumn:name="Phase",type=string,JSONPath=`.status.phase`
 
-type Domain struct {
+type Alert struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              DomainSpec   `json:"spec,omitempty"`
-	Status            DomainStatus `json:"status,omitempty"`
+	Spec              AlertSpec   `json:"spec,omitempty"`
+	Status            AlertStatus `json:"status,omitempty"`
 }
 
-type DomainSpec struct {
-	State *DomainSpecResource `json:"state,omitempty" tf:"-"`
+type AlertSpecAlertsSlack struct {
+	// The Slack channel to send alerts to
+	Channel *string `json:"channel" tf:"channel"`
+	// The webhook URL for Slack
+	Url *string `json:"url" tf:"url"`
+}
 
-	Resource DomainSpecResource `json:"resource" tf:"resource"`
+type AlertSpecAlerts struct {
+	// List of email addresses to sent notifications to
+	// +optional
+	Email []string `json:"email,omitempty" tf:"email"`
+	// +optional
+	Slack []AlertSpecAlertsSlack `json:"slack,omitempty" tf:"slack"`
+}
+
+type AlertSpec struct {
+	State *AlertSpecResource `json:"state,omitempty" tf:"-"`
+
+	Resource AlertSpecResource `json:"resource" tf:"resource"`
 
 	UpdatePolicy base.UpdatePolicy `json:"updatePolicy,omitempty" tf:"-"`
 
@@ -55,19 +70,31 @@ type DomainSpec struct {
 	BackendRef *core.LocalObjectReference `json:"backendRef,omitempty" tf:"-"`
 }
 
-type DomainSpecResource struct {
+type AlertSpecResource struct {
 	ID string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// List with details how to notify about the alert. Support for Slack or email.
+	Alerts *AlertSpecAlerts `json:"alerts" tf:"alerts"`
+	// The comparison operator to use for value
+	Compare *string `json:"compare" tf:"compare"`
+	// Description of the alert policy
+	Description *string `json:"description" tf:"description"`
 	// +optional
-	IpAddress *string `json:"ipAddress,omitempty" tf:"ip_address"`
-	Name      *string `json:"name" tf:"name"`
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled"`
+	// The droplets to apply the alert policy to
 	// +optional
-	Ttl *int64 `json:"ttl,omitempty" tf:"ttl"`
+	// +kubebuilder:validation:MinItems=1
+	Entities []string `json:"entities,omitempty" tf:"entities"`
 	// +optional
-	Urn *string `json:"urn,omitempty" tf:"urn"`
+	Tags []string `json:"tags,omitempty" tf:"tags"`
+	Type *string  `json:"type" tf:"type"`
+	// +optional
+	Uuid   *string  `json:"uuid,omitempty" tf:"uuid"`
+	Value  *float64 `json:"value" tf:"value"`
+	Window *string  `json:"window" tf:"window"`
 }
 
-type DomainStatus struct {
+type AlertStatus struct {
 	// Resource generation, which is updated on mutation by the API Server.
 	// +optional
 	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
@@ -80,10 +107,10 @@ type DomainStatus struct {
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 
-// DomainList is a list of Domains
-type DomainList struct {
+// AlertList is a list of Alerts
+type AlertList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	// Items is a list of Domain CRD objects
-	Items []Domain `json:"items,omitempty"`
+	// Items is a list of Alert CRD objects
+	Items []Alert `json:"items,omitempty"`
 }
