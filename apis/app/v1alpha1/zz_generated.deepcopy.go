@@ -1026,6 +1026,11 @@ func (in *AppSpecSpecServiceRoutes) DeepCopyInto(out *AppSpecSpecServiceRoutes) 
 		*out = new(string)
 		**out = **in
 	}
+	if in.PreservePathPrefix != nil {
+		in, out := &in.PreservePathPrefix, &out.PreservePathPrefix
+		*out = new(bool)
+		**out = **in
+	}
 	return
 }
 
@@ -1341,6 +1346,11 @@ func (in *AppSpecSpecStaticSiteRoutes) DeepCopyInto(out *AppSpecSpecStaticSiteRo
 	if in.Path != nil {
 		in, out := &in.Path, &out.Path
 		*out = new(string)
+		**out = **in
+	}
+	if in.PreservePathPrefix != nil {
+		in, out := &in.PreservePathPrefix, &out.PreservePathPrefix
+		*out = new(bool)
 		**out = **in
 	}
 	return

@@ -88,7 +88,7 @@ func (r *ContainerRegistry) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range containerregistryForceNewList {
+	for key, _ := range containerregistryForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

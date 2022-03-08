@@ -313,6 +313,9 @@ type AppSpecSpecServiceRoutes struct {
 	// Path specifies an route by HTTP path prefix. Paths must start with / and must be unique within the app.
 	// +optional
 	Path *string `json:"path,omitempty" tf:"path"`
+	//  An optional flag to preserve the path that is forwarded to the backend service.
+	// +optional
+	PreservePathPrefix *bool `json:"preservePathPrefix,omitempty" tf:"preserve_path_prefix"`
 }
 
 type AppSpecSpecService struct {
@@ -447,6 +450,9 @@ type AppSpecSpecStaticSiteRoutes struct {
 	// Path specifies an route by HTTP path prefix. Paths must start with / and must be unique within the app.
 	// +optional
 	Path *string `json:"path,omitempty" tf:"path"`
+	//  An optional flag to preserve the path that is forwarded to the backend service.
+	// +optional
+	PreservePathPrefix *bool `json:"preservePathPrefix,omitempty" tf:"preserve_path_prefix"`
 }
 
 type AppSpecSpecStaticSite struct {

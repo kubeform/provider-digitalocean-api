@@ -93,7 +93,7 @@ func (r *ConnectionPool) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range connectionpoolForceNewList {
+	for key, _ := range connectionpoolForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

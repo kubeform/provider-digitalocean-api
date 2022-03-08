@@ -82,6 +82,10 @@ spec:
                             format: int64
                             type: integer
                           type: array
+                        sourceKubernetesIDS:
+                          items:
+                            type: string
+                          type: array
                         sourceLoadBalancerUids:
                           items:
                             type: string
@@ -107,6 +111,10 @@ spec:
                           items:
                             format: int64
                             type: integer
+                          type: array
+                        destinationKubernetesIDS:
+                          items:
+                            type: string
                           type: array
                         destinationLoadBalancerUids:
                           items:
@@ -172,6 +180,10 @@ spec:
                             format: int64
                             type: integer
                           type: array
+                        sourceKubernetesIDS:
+                          items:
+                            type: string
+                          type: array
                         sourceLoadBalancerUids:
                           items:
                             type: string
@@ -197,6 +209,10 @@ spec:
                           items:
                             format: int64
                             type: integer
+                          type: array
+                        destinationKubernetesIDS:
+                          items:
+                            type: string
                           type: array
                         destinationLoadBalancerUids:
                           items:

@@ -94,7 +94,7 @@ func (r *Droplet) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range dropletForceNewList {
+	for key, _ := range dropletForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

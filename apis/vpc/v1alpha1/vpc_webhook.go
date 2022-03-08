@@ -89,7 +89,7 @@ func (r *Vpc) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range vpcForceNewList {
+	for key, _ := range vpcForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -88,7 +88,7 @@ func (r *FloatingIP) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range floatingipForceNewList {
+	for key, _ := range floatingipForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

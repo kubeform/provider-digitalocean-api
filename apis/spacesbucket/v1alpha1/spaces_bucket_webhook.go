@@ -88,7 +88,7 @@ func (r *SpacesBucket) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range spacesbucketForceNewList {
+	for key, _ := range spacesbucketForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

@@ -41,6 +41,23 @@ type Cluster struct {
 	Status            ClusterStatus `json:"status,omitempty"`
 }
 
+type ClusterSpecKubeConfig struct {
+	// +optional
+	ClientCertificate *string `json:"clientCertificate,omitempty" tf:"client_certificate"`
+	// +optional
+	ClientKey *string `json:"clientKey,omitempty" tf:"client_key"`
+	// +optional
+	ClusterCaCertificate *string `json:"clusterCaCertificate,omitempty" tf:"cluster_ca_certificate"`
+	// +optional
+	ExpiresAt *string `json:"expiresAt,omitempty" tf:"expires_at"`
+	// +optional
+	Host *string `json:"host,omitempty" tf:"host"`
+	// +optional
+	RawConfig *string `json:"rawConfig,omitempty" tf:"raw_config"`
+	// +optional
+	Token *string `json:"token,omitempty" tf:"token"`
+}
+
 type ClusterSpecMaintenancePolicy struct {
 	// +optional
 	Day *string `json:"day,omitempty" tf:"day"`
@@ -130,6 +147,7 @@ type ClusterSpecResource struct {
 	// +optional
 	Ipv4Address *string `json:"ipv4Address,omitempty" tf:"ipv4_address"`
 	// +optional
+	KubeConfig []ClusterSpecKubeConfig `json:"-" sensitive:"true" tf:"kube_config"`
 	// +optional
 	MaintenancePolicy *ClusterSpecMaintenancePolicy `json:"maintenancePolicy,omitempty" tf:"maintenance_policy"`
 	Name              *string                       `json:"name" tf:"name"`

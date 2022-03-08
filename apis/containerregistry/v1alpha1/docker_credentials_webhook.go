@@ -88,7 +88,7 @@ func (r *DockerCredentials) ValidateUpdate(old runtime.Object) error {
 		return err
 	}
 
-	for key := range dockercredentialsForceNewList {
+	for key, _ := range dockercredentialsForceNewList {
 		keySplit := strings.Split(key, "/*")
 		length := len(keySplit)
 		checkIfAnyDif := false

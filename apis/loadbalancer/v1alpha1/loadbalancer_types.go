@@ -99,6 +99,8 @@ type LoadbalancerSpecResource struct {
 	// +optional
 	Algorithm *string `json:"algorithm,omitempty" tf:"algorithm"`
 	// +optional
+	DisableLetsEncryptDNSRecords *bool `json:"disableLetsEncryptDNSRecords,omitempty" tf:"disable_lets_encrypt_dns_records"`
+	// +optional
 	DropletIDS []int64 `json:"dropletIDS,omitempty" tf:"droplet_ids"`
 	// +optional
 	DropletTag *string `json:"dropletTag,omitempty" tf:"droplet_tag"`
@@ -118,6 +120,8 @@ type LoadbalancerSpecResource struct {
 	Region              *string `json:"region" tf:"region"`
 	// +optional
 	Size *string `json:"size,omitempty" tf:"size"`
+	// +optional
+	SizeUnit *int64 `json:"sizeUnit,omitempty" tf:"size_unit"`
 	// +optional
 	Status *string `json:"status,omitempty" tf:"status"`
 	// +optional
