@@ -139,6 +139,11 @@ func (in *FirewallSpecInboundRule) DeepCopyInto(out *FirewallSpecInboundRule) {
 		*out = make([]int64, len(*in))
 		copy(*out, *in)
 	}
+	if in.SourceKubernetesIDS != nil {
+		in, out := &in.SourceKubernetesIDS, &out.SourceKubernetesIDS
+		*out = make([]string, len(*in))
+		copy(*out, *in)
+	}
 	if in.SourceLoadBalancerUids != nil {
 		in, out := &in.SourceLoadBalancerUids, &out.SourceLoadBalancerUids
 		*out = make([]string, len(*in))
@@ -173,6 +178,11 @@ func (in *FirewallSpecOutboundRule) DeepCopyInto(out *FirewallSpecOutboundRule) 
 	if in.DestinationDropletIDS != nil {
 		in, out := &in.DestinationDropletIDS, &out.DestinationDropletIDS
 		*out = make([]int64, len(*in))
+		copy(*out, *in)
+	}
+	if in.DestinationKubernetesIDS != nil {
+		in, out := &in.DestinationKubernetesIDS, &out.DestinationKubernetesIDS
+		*out = make([]string, len(*in))
 		copy(*out, *in)
 	}
 	if in.DestinationLoadBalancerUids != nil {

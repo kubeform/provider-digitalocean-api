@@ -59,6 +59,8 @@ spec:
                 properties:
                   algorithm:
                     type: string
+                  disableLetsEncryptDNSRecords:
+                    type: boolean
                   dropletIDS:
                     items:
                       format: int64
@@ -135,6 +137,9 @@ spec:
                     type: string
                   size:
                     type: string
+                  sizeUnit:
+                    format: int64
+                    type: integer
                   status:
                     type: string
                   stickySessions:
@@ -161,6 +166,8 @@ spec:
                 properties:
                   algorithm:
                     type: string
+                  disableLetsEncryptDNSRecords:
+                    type: boolean
                   dropletIDS:
                     items:
                       format: int64
@@ -237,6 +244,9 @@ spec:
                     type: string
                   size:
                     type: string
+                  sizeUnit:
+                    format: int64
+                    type: integer
                   status:
                     type: string
                   stickySessions:

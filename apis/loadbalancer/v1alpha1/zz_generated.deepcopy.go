@@ -226,6 +226,11 @@ func (in *LoadbalancerSpecResource) DeepCopyInto(out *LoadbalancerSpecResource) 
 		*out = new(string)
 		**out = **in
 	}
+	if in.DisableLetsEncryptDNSRecords != nil {
+		in, out := &in.DisableLetsEncryptDNSRecords, &out.DisableLetsEncryptDNSRecords
+		*out = new(bool)
+		**out = **in
+	}
 	if in.DropletIDS != nil {
 		in, out := &in.DropletIDS, &out.DropletIDS
 		*out = make([]int64, len(*in))
@@ -281,6 +286,11 @@ func (in *LoadbalancerSpecResource) DeepCopyInto(out *LoadbalancerSpecResource) 
 	if in.Size != nil {
 		in, out := &in.Size, &out.Size
 		*out = new(string)
+		**out = **in
+	}
+	if in.SizeUnit != nil {
+		in, out := &in.SizeUnit, &out.SizeUnit
+		*out = new(int64)
 		**out = **in
 	}
 	if in.Status != nil {

@@ -50,6 +50,8 @@ type FirewallSpecInboundRule struct {
 	// +optional
 	SourceDropletIDS []int64 `json:"sourceDropletIDS,omitempty" tf:"source_droplet_ids"`
 	// +optional
+	SourceKubernetesIDS []string `json:"sourceKubernetesIDS,omitempty" tf:"source_kubernetes_ids"`
+	// +optional
 	SourceLoadBalancerUids []string `json:"sourceLoadBalancerUids,omitempty" tf:"source_load_balancer_uids"`
 	// +optional
 	SourceTags []string `json:"sourceTags,omitempty" tf:"source_tags"`
@@ -60,6 +62,8 @@ type FirewallSpecOutboundRule struct {
 	DestinationAddresses []string `json:"destinationAddresses,omitempty" tf:"destination_addresses"`
 	// +optional
 	DestinationDropletIDS []int64 `json:"destinationDropletIDS,omitempty" tf:"destination_droplet_ids"`
+	// +optional
+	DestinationKubernetesIDS []string `json:"destinationKubernetesIDS,omitempty" tf:"destination_kubernetes_ids"`
 	// +optional
 	DestinationLoadBalancerUids []string `json:"destinationLoadBalancerUids,omitempty" tf:"destination_load_balancer_uids"`
 	// +optional
